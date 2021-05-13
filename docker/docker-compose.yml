@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  rtsp-server:
+    container_name: 'rtsp-server'
+    image: 'rtsp-server'
+    build: .
+    command: bash -c "python main.py"   
+    network_mode: host
+    volumes:
+      - ../:/rtsp-server
+    environment:
+      - MP4_FILENAME=contexto.mp4
+      - DST_STREAM=stream1
+    tty: true
+    stdin_open: true
+    privileged: true    
